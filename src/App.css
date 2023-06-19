@@ -1,0 +1,18 @@
+body {
+  background-color: #dddddd;
+}
+.col-md-9.lef-side {
+  padding-top: 50px;
+}
+.mini-heading {
+  font-size: 16px;
+}
+.main-div-start {
+  align-items: start;
+}
+.right-side {
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}

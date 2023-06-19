@@ -1,0 +1,55 @@
+.sidebar {
+  padding: 20px 10px;
+}
+.profile .d-flex {
+  place-items: center;
+}
+.profile img {
+  border-radius: 100%;
+}
+.profile .content span {
+  font-size: 12px;
+}
+.user-info {
+  background: #e1e1e1;
+  padding: 15px;
+  border-radius: 7px;
+}
+.user-info .d-flex {
+  place-items: center;
+}
+.user-info .d-flex p {
+  margin: 0;
+  font-weight: 700;
+}
+.add-break {
+  background: #e1e1e1;
+  padding: 15px;
+  border-radius: 7px;
+}
+button.time-btn {
+  background: #ffffff;
+  border-radius: 100%;
+  padding: 11px 10px;
+}
+
+.excercise-time,
+.break-time {
+  display: flex;
+  place-items: center;
+  justify-content: space-between;
+  background: #ddd;
+  padding: 10px;
+  border-radius: 5px;
+}
+.excercise-time input,
+.break-time input {
+  text-align: right;
+  border: none;
+  background-color: #ddd;
+  max-width: 170px;
+}
+.excercise-time strong,
+.break-time strong {
+  font-size: 12px;
+}
