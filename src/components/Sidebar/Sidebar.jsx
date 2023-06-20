@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import { useToasts } from "react-toast-notifications";
 import "./Sidebar.css";
 
-export default function Sidebar() {
+export default function Sidebar({ time }) {
+  let storeTime = localStorage.getItem("break-time");
+  if (storeTime) {
+    storeTime = parseInt(storeTime);
+  } else {
+    storeTime = 0;
+  }
+  const [breakTime, setBreakTime] = useState(storeTime);
+
+  const addBreak = (breakTime) => {
+    localStorage.setItem("break-time", breakTime);
+    const localStored = localStorage.getItem("break-time");
+    setBreakTime(parseInt(localStored));
+  };
+
+  const { addToast } = useToasts();
+
   return (
     <div>
       <div className="sidebar">
@@ -37,19 +54,54 @@ export default function Sidebar() {
             <div className="add-break">
               <div className="d-flex justify-content-between text-center">
                 <div className="time">
-                  <button className="time-btn btn btn-default">20s</button>
+                  <button
+                    className={`time-btn btn ${
+                      breakTime == 20 ? "btn-primary" : "btn-default"
+                    }`}
+                    onClick={() => addBreak(20)}
+                  >
+                    20s
+                  </button>
                 </div>
                 <div className="time">
-                  <button className="time-btn btn btn-default">25s</button>
+                  <button
+                    className={`time-btn btn ${
+                      breakTime == 25 ? "btn-primary" : "btn-default"
+                    }`}
+                    onClick={() => addBreak(25)}
+                  >
+                    25s
+                  </button>
                 </div>
                 <div className="time">
-                  <button className="time-btn btn btn-default">30s</button>
+                  <button
+                    className={`time-btn btn ${
+                      breakTime == 30 ? "btn-primary" : "btn-default"
+                    }`}
+                    onClick={() => addBreak(30)}
+                  >
+                    30s
+                  </button>
                 </div>
                 <div className="time">
-                  <button className="time-btn btn btn-default">40s</button>
+                  <button
+                    className={`time-btn btn ${
+                      breakTime == 40 ? "btn-primary" : "btn-default"
+                    }`}
+                    onClick={() => addBreak(40)}
+                  >
+                    40s
+                  </button>
                 </div>
                 <div className="time">
-                  <button className="time-btn btn btn-default">50s</button>
+                  <button
+                    className={`time-btn btn ${
+                      breakTime == 50 ? "btn-primary" : "btn-default"
+                    }`}
+                    onClick={() => addBreak(50)}
+                  >
+                    50s
+                  </button>
                 </div>
               </div>
             </div>
@@ -63,6 +115,7 @@ export default function Sidebar() {
                 type="text"
                 className="no-shadow"
                 placeholder="200 seconds"
+                value={time + " seconds"}
                 readOnly
               />
             </div>
@@ -72,13 +125,22 @@ export default function Sidebar() {
                 type="read-only"
                 className="no-shadow"
                 placeholder="15 seconds"
+                value={breakTime + " seconds"}
                 readOnly
               />
             </div>
           </div>
 
           <div className="activity-submit mt-4">
-            <button className="btn btn-primary w-100">
+            <button
+              className="btn btn-primary w-100"
+              onClick={() =>
+                addToast("Task completed successfully", {
+                  appearance: "success",
+                  autoDismiss: true,
+                })
+              }
+            >
               Activity Completed
             </button>
           </div>

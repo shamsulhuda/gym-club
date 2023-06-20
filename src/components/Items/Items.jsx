@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Item.css";
-export default function Items() {
-  const [items, setItems] = useState([]);
-  useEffect(() => {
-    fetch("data.json")
-      .then((res) => res.json())
-      .then((data) => setItems(data));
-  }, []);
+export default function Items({ items, addTime }) {
+  const addItem = (id, time) => {
+    addTime(id, time);
+  };
   return (
     <div>
       <div className="items-container">
@@ -27,7 +24,10 @@ export default function Items() {
                     <p>For age: {item.age}</p>
                     <p>Time required: {item.time}s</p>
                     <div className="action-btn">
-                      <button className="card-CTA btn btn-primary">
+                      <button
+                        className="card-CTA btn btn-primary"
+                        onClick={() => addItem(item.id, item.time)}
+                      >
                         Add to list
                       </button>
                     </div>

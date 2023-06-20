@@ -33,6 +33,10 @@ button.time-btn {
   padding: 11px 10px;
 }
 
+.sidebar button.btn-primary {
+  background-color: blue;
+}
+
 .excercise-time,
 .break-time {
   display: flex;
